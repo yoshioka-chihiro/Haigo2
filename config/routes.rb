@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'materials/index'
+    get 'materials/show'
+  end
   namespace :admin do
     get 'materials/index'
     get 'materials/edit'
@@ -34,11 +38,6 @@ Rails.application.routes.draw do
     get 'members/edit'
   end
   namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-  end
-  namespace :piblic do
     get 'members/index'
     get 'members/show'
     get 'members/edit'
