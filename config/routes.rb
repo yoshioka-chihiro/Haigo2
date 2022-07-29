@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'material_genres/new'
+    get 'material_genres/index'
+    get 'material_genres/edit'
+  end
+  namespace :admin do
     get 'allergies/index'
     get 'allergies/edit'
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_070805) do
+ActiveRecord::Schema.define(version: 2022_07_29_071224) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,21 +67,27 @@ ActiveRecord::Schema.define(version: 2022_07_29_070805) do
   end
 
   create_table "material_additives", force: :cascade do |t|
-    t.integer "material_id_id", null: false
-    t.integer "additive_id_id", null: false
+    t.integer "material_id", null: false
+    t.integer "additive_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["additive_id_id"], name: "index_material_additives_on_additive_id_id"
-    t.index ["material_id_id"], name: "index_material_additives_on_material_id_id"
+    t.index ["additive_id"], name: "index_material_additives_on_additive_id"
+    t.index ["material_id"], name: "index_material_additives_on_material_id"
   end
 
   create_table "material_allergies", force: :cascade do |t|
-    t.integer "material_id_id", null: false
-    t.integer "allergy_id_id", null: false
+    t.integer "material_id", null: false
+    t.integer "allergy_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["allergy_id_id"], name: "index_material_allergies_on_allergy_id_id"
-    t.index ["material_id_id"], name: "index_material_allergies_on_material_id_id"
+    t.index ["allergy_id"], name: "index_material_allergies_on_allergy_id"
+    t.index ["material_id"], name: "index_material_allergies_on_material_id"
+  end
+
+  create_table "material_genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "materials", force: :cascade do |t|
@@ -114,9 +120,9 @@ ActiveRecord::Schema.define(version: 2022_07_29_070805) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "material_additives", "additive_ids"
-  add_foreign_key "material_additives", "material_ids"
-  add_foreign_key "material_allergies", "allergy_ids"
-  add_foreign_key "material_allergies", "material_ids"
+  add_foreign_key "material_additives", "additives"
+  add_foreign_key "material_additives", "materials"
+  add_foreign_key "material_allergies", "allergies"
+  add_foreign_key "material_allergies", "materials"
   add_foreign_key "materials", "material_genres"
 end
