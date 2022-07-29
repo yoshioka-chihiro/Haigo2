@@ -53,8 +53,6 @@ ActiveRecord::Schema.define(version: 2022_07_29_063105) do
   end
 
   create_table "materials", force: :cascade do |t|
-    t.integer "additive_id"
-    t.integer "allergy_id"
     t.integer "material_genre_id"
     t.string "name", null: false
     t.string "distributor", null: false
@@ -65,8 +63,6 @@ ActiveRecord::Schema.define(version: 2022_07_29_063105) do
     t.float "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["additive_id"], name: "index_materials_on_additive_id"
-    t.index ["allergy_id"], name: "index_materials_on_allergy_id"
     t.index ["material_genre_id"], name: "index_materials_on_material_genre_id"
   end
 
@@ -86,7 +82,5 @@ ActiveRecord::Schema.define(version: 2022_07_29_063105) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "materials", "additives"
-  add_foreign_key "materials", "allergies"
   add_foreign_key "materials", "material_genres"
 end

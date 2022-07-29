@@ -1,8 +1,6 @@
 class CreateMaterials < ActiveRecord::Migration[6.1]
   def change
     create_table :materials do |t|
-      t.references :additive, foreign_key: true
-      t.references :allergy, foreign_key: true
       t.references :material_genre, foreign_key: true
       t.string :name, null: false
       t.string :distributor, null: false
