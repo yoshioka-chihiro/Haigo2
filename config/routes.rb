@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'materials/index'
+    get 'materials/edit'
+    get 'materials/show'
+    get 'materials/new'
+  end
   namespace :public do
     get 'homes/top'
   end
