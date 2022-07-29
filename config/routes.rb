@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'allergies/index'
+    get 'allergies/edit'
+  end
+  namespace :admin do
     get 'additives/index'
     get 'additives/edit'
   end
