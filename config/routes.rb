@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'additives/index'
+    get 'additives/edit'
+  end
   namespace :public do
     get 'materials/index'
     get 'materials/show'
