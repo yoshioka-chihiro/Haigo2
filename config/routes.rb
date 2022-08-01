@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'recipes/index'
+    get 'recipes/show'
+    get 'recipes/new'
+    get 'recipes/edit'
+  end
   namespace :admin do
     get 'material_genres/new'
     get 'material_genres/index'
