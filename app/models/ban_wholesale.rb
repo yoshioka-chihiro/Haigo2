@@ -1,0 +1,2 @@
+class BanWholesale < ApplicationRecord
+end

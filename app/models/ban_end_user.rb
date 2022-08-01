@@ -1,0 +1,2 @@
+class BanEndUser < ApplicationRecord
+end

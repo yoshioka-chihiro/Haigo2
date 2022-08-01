@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_072414) do
+ActiveRecord::Schema.define(version: 2022_08_01_144343) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,24 @@ ActiveRecord::Schema.define(version: 2022_07_29_072414) do
     t.boolean "is_specific", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ban_end_users", force: :cascade do |t|
+    t.integer "end_user_id", null: false
+    t.integer "material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id"], name: "index_ban_end_users_on_end_user_id"
+    t.index ["material_id"], name: "index_ban_end_users_on_material_id"
+  end
+
+  create_table "ban_wholesales", force: :cascade do |t|
+    t.integer "wholesale_id", null: false
+    t.integer "material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["material_id"], name: "index_ban_wholesales_on_material_id"
+    t.index ["wholesale_id"], name: "index_ban_wholesales_on_wholesale_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -132,6 +150,10 @@ ActiveRecord::Schema.define(version: 2022_07_29_072414) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "ban_end_users", "end_users"
+  add_foreign_key "ban_end_users", "materials"
+  add_foreign_key "ban_wholesales", "materials"
+  add_foreign_key "ban_wholesales", "wholesales"
   add_foreign_key "material_additives", "additives"
   add_foreign_key "material_additives", "materials"
   add_foreign_key "material_allergies", "allergies"
