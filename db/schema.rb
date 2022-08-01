@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_01_145832) do
+ActiveRecord::Schema.define(version: 2022_08_01_150221) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -151,6 +151,16 @@ ActiveRecord::Schema.define(version: 2022_08_01_145832) do
     t.index ["material_id"], name: "index_nutritional_components_on_material_id"
   end
 
+  create_table "recipe_genres", force: :cascade do |t|
+    t.integer "allergy_id", null: false
+    t.integer "recipe_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["allergy_id"], name: "index_recipe_genres_on_allergy_id"
+    t.index ["recipe_id"], name: "index_recipe_genres_on_recipe_id"
+  end
+
   create_table "recipe_materials", force: :cascade do |t|
     t.integer "material_id", null: false
     t.integer "recipe_id", null: false
@@ -194,6 +204,8 @@ ActiveRecord::Schema.define(version: 2022_08_01_145832) do
   add_foreign_key "material_allergies", "materials"
   add_foreign_key "materials", "material_genres"
   add_foreign_key "nutritional_components", "materials"
+  add_foreign_key "recipe_genres", "allergies"
+  add_foreign_key "recipe_genres", "recipes"
   add_foreign_key "recipe_materials", "materials"
   add_foreign_key "recipe_materials", "recipes"
   add_foreign_key "recipes", "end_users"
