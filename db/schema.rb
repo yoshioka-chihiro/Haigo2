@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_01_144343) do
+ActiveRecord::Schema.define(version: 2022_08_01_145041) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -142,6 +142,15 @@ ActiveRecord::Schema.define(version: 2022_08_01_144343) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "nutritional_components", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "amount", null: false
+    t.integer "material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["material_id"], name: "index_nutritional_components_on_material_id"
+  end
+
   create_table "wholesales", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -159,4 +168,5 @@ ActiveRecord::Schema.define(version: 2022_08_01_144343) do
   add_foreign_key "material_allergies", "allergies"
   add_foreign_key "material_allergies", "materials"
   add_foreign_key "materials", "material_genres"
+  add_foreign_key "nutritional_components", "materials"
 end
