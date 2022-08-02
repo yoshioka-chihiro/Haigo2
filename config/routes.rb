@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+  
+  # 顧客用
+  # URL /customers/sign_in …
+  # パスワードの変更は不要だからスキップ
+  devise_for :members,skip:[:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  # 管理者用
+  # URL /admin/sign_in …
+  # パスワードの変更・管理者側の登録は不要だからスキップ
+  devise_for :admin,skip:[:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  root to: 'public/homes#top'
+  
+  scope module: public do
+    
+    resources :recipes, only:[:index, :show, :edit, :create, :update, :destroy]
+    
+  end
 
   namespace :public do
     get 'recipes/index'
@@ -35,20 +58,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
-  # 顧客用
-  # URL /customers/sign_in …
-  # パスワードの変更は不要だからスキップ
-  devise_for :members,skip:[:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-
-  # 管理者用
-  # URL /admin/sign_in …
-  # パスワードの変更・管理者側の登録は不要だからスキップ
-  devise_for :admin,skip:[:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
 
 
   namespace :public do
