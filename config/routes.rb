@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
 
   scope module: :public do
-
     resources :recipes, only:[:index, :show, :edit, :create, :update, :destroy]
     resources :material_genres, only:[:new, :index, :edit]
     resources :materials, only:[:index, :show]
