@@ -1,2 +1,0 @@
-class NutrialComponent < ApplicationRecord
-end

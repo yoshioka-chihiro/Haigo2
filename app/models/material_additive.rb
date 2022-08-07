@@ -1,4 +1,4 @@
 class MaterialAdditive < ApplicationRecord
-  belongs_to :material_id
-  belongs_to :additive_id
+  belongs_to :material
+  belongs_to :additive
 end

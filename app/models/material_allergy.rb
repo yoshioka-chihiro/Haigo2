@@ -1,4 +1,4 @@
 class MaterialAllergy < ApplicationRecord
-  belongs_to :material_id
-  belongs_to :allergy_id
+  belongs_to :material
+  belongs_to :allergy
 end
