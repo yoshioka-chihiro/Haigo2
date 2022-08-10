@@ -11,6 +11,35 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <div>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active mr-3">
+              <%= link_to 'Top', root_path%>
+            </li>
+            <li class="nav-item active mr-3">
+              <%= link_to 'Recipe', recipes_path %>
+            </li>
+            <li class="nav-item active mr-3">
+              <%= link_to 'Member', members_path %>
+            </li>
+            <li class="nav-item active mr-3">
+              <%= link_to 'Material', materials_path %>
+            </li>
+            <li class="nav-item active mr-3">
+              <%= link_to 'ログイン', new_member_session_path %>
+            </li>
+            <li class="nav-item active mr-3">
+              <%= link_to '新規登録', new_member_registration_path %>
+            </li>
+            <li class="nav-item active mr-3 header-icon">
+              <%= link_to 'サインアウト', destroy_member_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
