@@ -1,0 +1,12 @@
+ja :
+    enums:
+      wholesale:
+        name:
+          y: "山崎製パン"
+          f: "フジパン"
+          s: "敷島製パン"
+      end_user:
+        name:
+          sb: "スターバックス"
+          md: "ミスタードーナッツ"
+          seven: "セブンイレブン"
