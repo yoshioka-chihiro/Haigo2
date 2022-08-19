@@ -4,19 +4,18 @@
 
 
 <%= f.label :wholesale_id, '卸先' %>
-<%#= f.select :, Wholesale.names_i18n.keys.map{|k| [I18n.t("enums.wholesale.name.#{k}"), k]}, {prompt: '選択してください'}, class: "form-control col-lg-5"  %>
+<%= f.collection_select :wholesale_id, Wholesale.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
 
 <%= f.label :end_user_id, '最終ユーザー' %>
-<%#= f.select :name, EndUser.names_i18n.keys.map{|k| [I18n.t("enums.end_user.name.#{k}"), k]}, {prompt: '選択してください'}, class: "form-control col-lg-5"  %>
+<%= f.collection_select :end_user_id, EndUser.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
 
-
-<%= label :manufacturing_cost, '製造費' %>
+<%= f.label :manufacturing_cost, '製造費' %>
 <%= f.text_field :manufacturing_cost %>
 
-<%= label :for_use, '用途' %>
+<%= f.label :for_use, '用途' %>
 <%= f.text_field :for_use %>
 
-<%= label :name, '製品名' %>
+<%= f.label :name, '製品名' %>
 <%= f.text_field :name %>
 
 
