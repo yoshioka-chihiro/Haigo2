@@ -1,5 +1,6 @@
 class Public::RecipesController < ApplicationController
   def index
+    @recipe = Recipe.new
   end
 
   def show
@@ -14,7 +15,7 @@ class Public::RecipesController < ApplicationController
       flash[:notice] = "登録完了"
       redirect_to recipes_path
     else
-      @recipes = Recipe.all
+      flash[:notice] = "登録していません"
       render "index"
     end
   end
@@ -25,7 +26,8 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipes_params
-    params.require(:recipe).permit(:name, :wholesale_id, :end_user_id, :manufacturing_cost, :for_use)
+    params
+    .require(:recipe).permit(:member_id, :name, :wholesale_id, :end_user_id, :manufacturing_cost, :material_cost, :for_use)
   end
 
 end

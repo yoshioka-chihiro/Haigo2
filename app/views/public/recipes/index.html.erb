@@ -1,10 +1,18 @@
 配合を立てる！
+<% if member_signed_in? %>
+<%= current_member.name %>がログイン中
+<% end %>
 
 <%= form_with model: @recipe, local:true do |f| %>
 
+<%= f.label :name, '製品名' %>
+<%= f.text_field :name %>
 
 <%= f.label :wholesale_id, '卸先' %>
 <%= f.collection_select :wholesale_id, Wholesale.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
+
+<%= f.label :member_id, 'メンバー' %>
+<%= f.collection_select :member_id, Member.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
 
 <%= f.label :end_user_id, '最終ユーザー' %>
 <%= f.collection_select :end_user_id, EndUser.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
@@ -12,11 +20,11 @@
 <%= f.label :manufacturing_cost, '製造費' %>
 <%= f.text_field :manufacturing_cost %>
 
+<%= f.label :material_cost, '材料費' %>
+<%= f.text_field :material_cost %>
+
 <%= f.label :for_use, '用途' %>
 <%= f.text_field :for_use %>
-
-<%= f.label :name, '製品名' %>
-<%= f.text_field :name %>
 
 
 <%= f.submit '作成' %>

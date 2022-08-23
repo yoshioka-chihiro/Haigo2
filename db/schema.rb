@@ -153,12 +153,10 @@ ActiveRecord::Schema.define(version: 2022_08_01_150221) do
 
   create_table "recipe_genres", force: :cascade do |t|
     t.integer "allergy_id", null: false
-    t.integer "recipe_id", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["allergy_id"], name: "index_recipe_genres_on_allergy_id"
-    t.index ["recipe_id"], name: "index_recipe_genres_on_recipe_id"
   end
 
   create_table "recipe_materials", force: :cascade do |t|
@@ -205,7 +203,6 @@ ActiveRecord::Schema.define(version: 2022_08_01_150221) do
   add_foreign_key "materials", "material_genres"
   add_foreign_key "nutritional_components", "materials"
   add_foreign_key "recipe_genres", "allergies"
-  add_foreign_key "recipe_genres", "recipes"
   add_foreign_key "recipe_materials", "materials"
   add_foreign_key "recipe_materials", "recipes"
   add_foreign_key "recipes", "end_users"
