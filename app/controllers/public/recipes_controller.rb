@@ -26,8 +26,7 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipes_params
-    params
-    .require(:recipe).permit(:member_id, :name, :wholesale_id, :end_user_id, :manufacturing_cost, :material_cost, :for_use)
+    params.require(:recipe).permit(:member_id, :name, :wholesale_id, :end_user_id, :manufacturing_cost, :material_cost, :for_use)
   end
 
 end

@@ -3,7 +3,7 @@
 <%= current_member.name %>がログイン中
 <% end %>
 
-<%= form_with model: @recipe, local:true do |f| %>
+<%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 
 <%= f.label :name, '製品名' %>
 <%= f.text_field :name %>
