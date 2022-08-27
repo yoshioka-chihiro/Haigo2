@@ -40,6 +40,9 @@
         </div>
       </nav>
     </header>
+    <% if notice %>
+      <p id="notice" class="alert alert-warning m-0 text-center bg-dark" style="color:white;" ><%= notice %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

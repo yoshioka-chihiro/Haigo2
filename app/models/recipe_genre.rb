@@ -1,4 +1,4 @@
 class RecipeGenre < ApplicationRecord
   belongs_to :allergy
-  belongs_to :recipe
+  has_many :recipes, dependent: :destroy
 end

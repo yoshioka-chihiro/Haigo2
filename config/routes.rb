@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     resources :wholesales, only: [:index, :edit, :update, :create]
     resources :end_users, only: [:index, :edit, :update, :create]
     resources :material_genres, only:[:new, :index, :edit]
-    resources :allergies, only:[:index, :edit]
-    resources :additives, only:[:index, :edit]
+    resources :allergies, only:[:index, :edit, :update, :create]
+    resources :additives, only:[:index, :edit, :update, :create]
     resources :materials, only:[:index, :edit, :show, :new]
     resources :members, only:[:index, :show, :edit]
   end

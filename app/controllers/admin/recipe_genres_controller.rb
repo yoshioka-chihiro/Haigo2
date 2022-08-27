@@ -7,9 +7,9 @@ class Admin::RecipeGenresController < ApplicationController
 
   def create
     @recipe_genre = RecipeGenre.new(recipe_genres_params)
-    if @recipe_genre.save
+    if @recipe_genre.save!
       flash[:notice] = "登録完了"
-      redirect_to admin_recipes_genres_path
+      redirect_to admin_recipe_genres_path
     else
       @recipe_genres = RecipeGenre.all
       render "index"
@@ -22,7 +22,7 @@ class Admin::RecipeGenresController < ApplicationController
   private
 
   def recipe_genres_params
-    params.require(:recipe_genre).permit(:name)
+    params.require(:recipe_genre).permit(:name, :allergy_id)
   end
 
 end

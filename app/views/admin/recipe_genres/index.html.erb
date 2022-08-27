@@ -1,16 +1,14 @@
 <div class="text-right">
   <%= form_with model: @recipe_genre, url: admin_recipe_genres_path, method: :post do |f| %>
     <div class="form-group row ml-5">
-      
+
       <%= f.label :name,"配合ジャンル名", class: "col-lg-3" %>
       <%= f.text_field :name, class: "form-control col-lg-3" %>
-      
-      <%= f.label :name,"禁止アレルギー", class: "col-lg-3" %>
-      <%= f.text_field :name, class: "form-control col-lg-3" %>
-      
-      <%= f.label :name,"", class: "col-lg-3" %>
-      <%= f.text_field :name, class: "form-control col-lg-3" %>
-      
+
+      <%= f.label :allergy_id, 'アレルギー' %>
+      <%= f.collection_select :allergy_id, Allergy.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
+
+
       <div class="col-lg-3">
         <%= f.submit '新規追加',class:"btn btn-success btn-block" %>
       </div>

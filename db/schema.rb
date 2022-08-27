@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 2022_08_01_150221) do
     t.integer "end_user_id", null: false
     t.integer "wholesale_id", null: false
     t.integer "member_id", null: false
+    t.integer "recipe_genre_id", null: false
     t.string "for_use", null: false
     t.float "manufacturing_cost", null: false
     t.float "material_cost", null: false
@@ -181,6 +182,7 @@ ActiveRecord::Schema.define(version: 2022_08_01_150221) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["end_user_id"], name: "index_recipes_on_end_user_id"
     t.index ["member_id"], name: "index_recipes_on_member_id"
+    t.index ["recipe_genre_id"], name: "index_recipes_on_recipe_genre_id"
     t.index ["wholesale_id"], name: "index_recipes_on_wholesale_id"
   end
 
@@ -207,5 +209,6 @@ ActiveRecord::Schema.define(version: 2022_08_01_150221) do
   add_foreign_key "recipe_materials", "recipes"
   add_foreign_key "recipes", "end_users"
   add_foreign_key "recipes", "members"
+  add_foreign_key "recipes", "recipe_genres"
   add_foreign_key "recipes", "wholesales"
 end
