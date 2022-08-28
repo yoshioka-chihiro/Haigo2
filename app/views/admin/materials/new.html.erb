@@ -1,2 +1,30 @@
-<h1>Admin::Materials#new</h1>
-<p>Find me in app/views/admin/materials/new.html.erb</p>
+<%= form_with model: @material, url: admin_materials_path, method: :post do |f| %>
+
+<%= f.label :name, '原料名' %>
+<%= f.text_field :name %>
+
+<%= f.label :material_genre_id, '原料ジャンル' %>
+<%= f.collection_select :material_genre_id, MaterialGenre.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
+
+<%= f.label :distributor, '販売者' %>
+<%= f.text_field :distributor %>
+
+<%= f.label :manufacturer, '生産者' %>
+<%= f.text_field :manufacturer %>
+
+<%= f.label :country_of_origin, '原産国' %>
+<%= f.text_field :country_of_origin %>
+
+<%= f.label :packing, '荷姿' %>
+<%= f.text_field :packing %>
+
+<%= f.label :preservation_method, '保存方法' %>
+<%= f.text_field :preservation_method %>
+
+<%= f.label :price, '価格' %>
+<%= f.text_field :price %>
+
+
+<%= f.submit '作成' %>
+
+<% end %>

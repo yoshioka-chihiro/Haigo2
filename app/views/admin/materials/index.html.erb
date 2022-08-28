@@ -1,2 +1,19 @@
-<h1>Admin::Materials#index</h1>
-<p>Find me in app/views/admin/materials/index.html.erb</p>
+
+  <div class="row text-center">
+    <div class="col-lg-6 offset-3">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <th>原料名</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @materials.each do |material| %>
+            <tr>
+              <td><%= material.name %></td>
+              <td><%= link_to "編集する", edit_admin_material_path(material.id), class: "btn btn-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
