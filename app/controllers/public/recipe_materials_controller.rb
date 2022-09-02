@@ -29,12 +29,7 @@ class Public::RecipeMaterialsController < ApplicationController
   private
 
   def recipe_materials_params
-    params.require(:recipe_material)
-    .permit(
-      :amount,
-      :material_id
-      )
-    .merge(recipe_id: recipe.id)
+    params.require(:recipe_material).permit(:amount,:material_id).merge(recipe_id: recipe.id)
   end
   
 end

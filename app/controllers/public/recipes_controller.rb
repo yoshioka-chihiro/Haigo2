@@ -2,6 +2,7 @@ class Public::RecipesController < ApplicationController
   def index
     @recipe = Recipe.new
     @recipes = Recipe.all
+    @recipe_material = @recipe.recipe_materials.bui
   end
 
   def show

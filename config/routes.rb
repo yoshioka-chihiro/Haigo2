@@ -24,6 +24,11 @@ Rails.application.routes.draw do
     resources :materials, only:[:index, :show]
     resources :members, only:[:index, :show, :edit]
     
+    
+    post '/add_material' => 'recipe_materials#add_material'
+    post '/update_material' => 'recipe_materials#update_material'
+    delete '/delete_material' => 'recipe_materials#delete_material'
+    
   end
 
   namespace :admin do
