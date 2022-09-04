@@ -1,5 +1,7 @@
 配合に原料を登録！
 
+この配合は「<%= @recipe.name %>」です。
+
 <%= form_with model: @recipe_material, url: recipe_materials_path, method: :post do |f| %>
 
 <%= f.label :material_id, '原料名' %>
@@ -8,7 +10,18 @@
 <%= f.label :amount, '配合量' %>
 <%= f.text_field :amount %>
 
+<%= f.hidden_field :recipe_id, :value => @recipe.id %>
+
 
 <%= f.submit '作成' %>
+
+<% end %>
+
+<% @recipe_materials.each do |recipe_material| %>
+    
+    <%= recipe_material.id %>
+    <%= recipe_material.material.name %>
+    <%= recipe_material.amount %>
+    <br>
 
 <% end %>
