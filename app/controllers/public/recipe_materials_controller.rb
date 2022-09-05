@@ -26,6 +26,19 @@ class Public::RecipeMaterialsController < ApplicationController
       render "new"
     end
   end
+  
+  def destroy
+    @d_recipe_material = RecipeMaterial.find(params[:id])
+    if @d_recipe_material.destroy
+      flash[:notice] = "削除しました"
+      
+      redirect_to new_recipe_material_path(recipe_id: @d_recipe_material.recipe_id)
+    else
+      @recipe_material = RecipeMaterial.new
+      flash[:notice] = "登録していません"
+      render "new"
+    end
+  end
 
   private
 

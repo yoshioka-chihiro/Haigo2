@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :recipes, only:[:index, :show, :edit, :create, :update, :destroy]
-    resources :recipe_materials, only:[:new, :create, :edit, :update]
+    resources :recipe_materials, only:[:new, :create, :edit, :update, :destroy]
     resources :material_genres, only:[:new, :index, :edit]
     resources :materials, only:[:index, :show]
     resources :members, only:[:index, :show, :edit]
