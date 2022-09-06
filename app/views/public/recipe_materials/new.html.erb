@@ -2,7 +2,7 @@
 
 この配合は「<%= @recipe.name %>」です。
 
-<%= form_with model: @recipe_material, url: recipe_materials_path, method: :post do |f| %>
+<%= form_with model: @recipe_material, url: recipe_materials_path(recipe_id: @recipe.id), method: :post do |f| %>
 
 <%= f.label :material_id, '原料名' %>
 <%= f.collection_select :material_id, Material.all, :id, :name, include_blank: "選択してください", class: "col-lg-4" %>
@@ -18,7 +18,7 @@
 <% end %>
 
 <% @recipe_materials.each do |recipe_material| %>
-    
+
     <%= recipe_material.id %>
     <%= recipe_material.material.name %>
     <%= recipe_material.amount %>
