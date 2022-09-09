@@ -13,6 +13,13 @@ class Public::RecipeMaterialsController < ApplicationController
     @recipe_material = RecipeMaterial.new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_materials = @recipe.recipe_materials
+    
+    # 合計表示用
+    @amount_sum = 0
+    @recipe_materials.each do |recipe_material|
+      @amount_sum += recipe_material.amount
+    end
+    
   end
 
   def create
