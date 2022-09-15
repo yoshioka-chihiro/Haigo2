@@ -24,7 +24,20 @@ class Public::RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
+  
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipes_params)
+      flash[:notice] = "更新しました。"
+      redirect_to recipe_path(@recipe)
+    else
+      flash[:alret] = "更新に失敗しました。"
+      render :edit
+    end
+  end
+
 
   private
 
